@@ -1,7 +1,9 @@
-from masks import get_mask_card_number, get_mask_account
+from masks import get_mask_account, get_mask_card_number
+
 
 def mask_account_card(card_or_account_info: str) -> str:
-    parts = card_or_account_info.rsplit(' ', 1)
+    """маскирует номер карты и счета"""
+    parts = card_or_account_info.rsplit(" ", 1)
     if len(parts) != 2:
         return card_or_account_info
     card_type = parts[0]
@@ -15,6 +17,7 @@ def mask_account_card(card_or_account_info: str) -> str:
 
 
 def get_date(date_string: str) -> str:
+    """форматирует ISO дату в нашу обычную"""
     date_part = date_string[:10]
-    year, month, day = date_part.split('-')
+    year, month, day = date_part.split("-")
     return f"{day}.{month}.{year}"
