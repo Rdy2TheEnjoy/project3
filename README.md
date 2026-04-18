@@ -121,6 +121,13 @@ filtered = filter_by_state(transactions)
 sorted_data = sort_by_date(filtered)
 print(sorted_data)
 ```
+## Зависимости
+
+- Python 3.14 или выше
+- Дополнительные библиотеки не требуются (используется только стандартная библиотека Python)
+## Конфигурация
+
+Проект не требует дополнительной конфигурации. Все функции работают сразу после копирования файлов.
 ## Автор
 
 [[Rdy2TheEnjoy](https://github.com/Rdy2TheEnjoy)]
