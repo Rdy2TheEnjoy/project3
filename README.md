@@ -93,34 +93,47 @@
 
 2. Поместите их в одну папку
 
-## Запуск и использование
+## Тестирование
 
-```python
-from masks import get_mask_card_number, get_mask_account
-from widget import mask_account_card, get_date
-from processing import filter_by_state, sort_by_date
+Для запуска тестов выполните команду:
 
-# Пример работы с маскировкой
-card_number = get_mask_card_number(1234567890123456)
-account_number = get_mask_account(12345678901234567890)
-print(card_number)
-print(account_number)
-
-# Пример работы с датой
-date = get_date("2024-03-20T12:00:00")
-print(date)
-
-# Пример фильтрации и сортировки
-transactions = [
-    {'id': 1, 'state': 'EXECUTED', 'date': '2024-03-20'},
-    {'id': 2, 'state': 'PENDING', 'date': '2024-01-15'},
-    {'id': 3, 'state': 'EXECUTED', 'date': '2024-04-01'}
-]
-
-filtered = filter_by_state(transactions)
-sorted_data = sort_by_date(filtered)
-print(sorted_data)
+```bash
+pytest
 ```
+
+Для проверки покрытия кода тестами:
+
+```bash
+pytest --cov=src --cov-report=html
+```
+
+После этого откройте файл `htmlcov/index.html` в браузере, чтобы увидеть детальный отчёт.
+
+### Используемые инструменты
+
+- `pytest` — фреймворк для тестирования
+- `pytest-cov` — проверка покрытия кода
+- `parametrize` — для проверки разных вариантов входных данных
+- `fixtures` — для подготовки тестовых данных
+
+### Структура тестов
+
+- `tests/conftest.py` — фикстуры с тестовыми данными
+- `tests/test_masks.py` — тесты для маскировки карт и счетов
+- `tests/test_processing.py` — тесты для фильтрации и сортировки
+- `tests/test_widget.py` — тесты для форматирования дат и маскировки
+
+### Линтеры
+
+Для проверки качества кода используются:
+
+```bash
+flake8 src/ tests/
+mypy src/ tests/
+isort src/ tests/
+```
+
+> **Статус:** Все тесты проходят, покрытие кода 100%. ✅
 ## Зависимости
 
 - Python 3.14 или выше
