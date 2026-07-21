@@ -1,5 +1,7 @@
 import pytest
-from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
+
+from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
+
 
 @pytest.mark.parametrize("currency, expected_ids", [
     ("USD", [1, 3]),
@@ -7,9 +9,9 @@ from src.generators import filter_by_currency, transaction_descriptions, card_nu
     ("RUB", [5]),
     ("GBP", []),
 ])
-def test_filter_by_currency(sample_transactions, currency, expected_ids):
+def test_filter_by_currency(transactions_data, currency, expected_ids):
     """Параметризованный тест фильтрации транзакций по валюте"""
-    result = list(filter_by_currency(sample_transactions, currency))
+    result = list(filter_by_currency(transactions_data, currency))
     result_ids = [t["id"] for t in result]
     assert result_ids == expected_ids
 
@@ -29,8 +31,9 @@ def test_filter_by_currency_no_matches():
     result = list(filter_by_currency(transactions, "USD"))
     assert result == []
 
+
 @pytest.mark.parametrize("transaction_list, expected", [
-    ("sample_transactions",
+    ("transactions_data",
      ["Перевод организации", "Перевод со счета на счет", "Перевод с карты на карту", "Оплата услуг", "Пополнение счета"]),
     ("empty_transactions", []),
 ])

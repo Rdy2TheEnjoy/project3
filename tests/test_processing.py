@@ -6,6 +6,7 @@ from src.processing import filter_by_state, sort_by_date
 
 # ---------- ТЕСТЫ ДЛЯ filter_by_state ----------
 
+
 @pytest.mark.parametrize("state, expected_ids", [
     ("EXECUTED", [1, 3]),
     ("CANCELED", [2]),

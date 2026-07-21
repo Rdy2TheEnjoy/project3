@@ -23,8 +23,9 @@ def unsorted_transactions() -> List[Dict[str, Any]]:
         {"id": 3, "date": "2023-02-10T09:15:00"},  # 10 февраля
     ]
 
+
 @pytest.fixture
-def sample_transactions():
+def transactions_data():
     """Фикстура с типовым списком транзакций для тестов генераторов"""
     return [
         {"id": 1, "amount": 100, "currency": "USD", "description": "Перевод организации"},
