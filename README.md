@@ -123,6 +123,23 @@ pytest --cov=src --cov-report=html
 - `tests/test_processing.py` — тесты для фильтрации и сортировки
 - `tests/test_widget.py` — тесты для форматирования дат и маскировки
 
+## 📦 Генераторы
+
+В проекте реализованы функции-генераторы для работы с транзакциями:
+
+### `filter_by_currency(transactions, currency_code)`
+
+Фильтрует транзакции по заданной валюте и возвращает итератор.
+
+```python
+transactions = [
+    {"id": 1, "amount": 100, "currency": "USD", "description": "Перевод организации"},
+    {"id": 2, "amount": 200, "currency": "EUR", "description": "Перевод со счета на счет"},
+]
+
+usd_transactions = list(filter_by_currency(transactions, "USD"))
+# [{"id": 1, "amount": 100, "currency": "USD", "description": "Перевод организации"}]
+
 ### Линтеры
 
 Для проверки качества кода используются:
@@ -132,8 +149,29 @@ flake8 src/ tests/
 mypy src/ tests/
 isort src/ tests/
 ```
+### `transaction_descriptions(transactions)`
 
+Возвращает описание каждой транзакции по очереди.
+
+```python
+transactions = [
+    {"id": 1, "amount": 100, "currency": "USD", "description": "Перевод организации"},
+    {"id": 2, "amount": 200, "currency": "EUR", "description": "Перевод со счета на счет"},
+]
+
+descriptions = list(transaction_descriptions(transactions))
+# ["Перевод организации", "Перевод со счета на счет"]
+```
+### `card_number_generator(start, end)`
+
+Генерирует номера банковских карт в заданном диапазоне в формате `XXXX XXXX XXXX XXXX`.
+
+```python
+cards = list(card_number_generator(1, 3))
+# ["0000 0000 0000 0001", "0000 0000 0000 0002", "0000 0000 0000 0003"]
+```
 > **Статус:** Все тесты проходят, покрытие кода 100%. ✅
+
 ## Зависимости
 
 - Python 3.14 или выше
