@@ -22,3 +22,30 @@ def unsorted_transactions() -> List[Dict[str, Any]]:
         {"id": 2, "date": "2023-01-20T14:30:00"},  # 20 января
         {"id": 3, "date": "2023-02-10T09:15:00"},  # 10 февраля
     ]
+
+
+@pytest.fixture
+def transactions_data():
+    """Фикстура с типовым списком транзакций для тестов генераторов"""
+    return [
+        {"id": 1, "amount": 100, "currency": "USD", "description": "Перевод организации"},
+        {"id": 2, "amount": 200, "currency": "EUR", "description": "Перевод со счета на счет"},
+        {"id": 3, "amount": 150, "currency": "USD", "description": "Перевод с карты на карту"},
+        {"id": 4, "amount": 300, "currency": "EUR", "description": "Оплата услуг"},
+        {"id": 5, "amount": 250, "currency": "RUB", "description": "Пополнение счета"},
+    ]
+
+
+@pytest.fixture
+def empty_transactions():
+    """Фикстура с пустым списком транзакций"""
+    return []
+
+
+@pytest.fixture
+def transactions_without_description():
+    """Фикстура с транзакциями без описания"""
+    return [
+        {"id": 1, "amount": 100, "currency": "USD"},
+        {"id": 2, "amount": 200, "currency": "EUR", "description": "Перевод"},
+    ]

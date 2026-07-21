@@ -6,6 +6,7 @@ from src.masks import get_mask_account, get_mask_card_number
 
 # ---------- ТЕСТЫ ДЛЯ get_mask_card_number ----------
 
+
 @pytest.mark.parametrize("card_input, expected", [
     ("1234567890123456", "1234 56** **** 3456"),
     ("1111222233334444", "1111 22** **** 4444"),
