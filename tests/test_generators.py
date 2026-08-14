@@ -34,7 +34,8 @@ def test_filter_by_currency_no_matches():
 
 @pytest.mark.parametrize("transaction_list, expected", [
     ("transactions_data",
-     ["Перевод организации", "Перевод со счета на счет", "Перевод с карты на карту", "Оплата услуг", "Пополнение счета"]),
+     ["Перевод организации", "Перевод со счета на счет", "Перевод с карты на карту",
+      "Оплата услуг", "Пополнение счета"]),
     ("empty_transactions", []),
 ])
 def test_transaction_descriptions(transaction_list, expected, request):

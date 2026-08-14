@@ -1,4 +1,5 @@
-def log(filename = None):
+def log(filename=None):
+    """Логирует успех или ошибку функции в консоль или указанный файл"""
     def decorator(func):
         def wrapper(*args, **kwargs):
             try:
@@ -7,15 +8,14 @@ def log(filename = None):
             except Exception as e:
                 log_message = func.__name__ + " error: " + str(e) + ". Inputs: " + str(args) + ", " + str(kwargs)
                 result = None
-            else:
-                print(log_message)
+                raise
             finally:
                 if filename:
                     with open(filename, "a") as f:
-                      f.write(log_message + "\n")
-
+                        f.write(log_message + "\n")
+                else:
+                    print(log_message)
 
             return result
         return wrapper
     return decorator
-
