@@ -1,7 +1,9 @@
 import json
 import os
 
+
 def load_transactions(file_path):
+    """Загружает транзакции из JSON-файла"""
     if not os.path.exists(file_path):
         return []
 
@@ -13,5 +15,3 @@ def load_transactions(file_path):
     if not isinstance(data, list):
         return []
     return data
-
-
